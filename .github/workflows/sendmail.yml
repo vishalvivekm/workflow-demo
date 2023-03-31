@@ -19,13 +19,13 @@ jobs:
         run: exit 1
         
   send-failure-notification:
-    name: Send email notification on failure
+    name: notify on failure
     needs: run-script
     if: ${{ failure() }}
     runs-on: ubuntu-22.04
     steps:
       - name: Send email
-        uses: dawidd6/action-send-mail@v3
+        uses: dawidd6/action-send-mail@v3.7.1
         with:
           connection_url: ${{ secrets.MAIL_CONNECTION }}
           server_address: smtp.gmail.com
@@ -33,11 +33,11 @@ jobs:
           secure: true
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          subject: "Meshmodel generation/ updation failed"
+          subject: "run-script job failed"
           to: vivekvishalmi@gmail.com
-          from: GitHub Actions<noreply@github.com>
+          from: <noreply@github.com>
           body: |
-            Meshmodel generation/ updation failed in the workflow for repository ${{ github.repository }}. Check the workflow logs for details.
+            run-script job failed and this mail is to notify you.
 
 #       - name: Send email
 #         if: ${{ failure() }}
