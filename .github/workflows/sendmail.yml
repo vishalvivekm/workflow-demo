@@ -1,0 +1,29 @@
+name: Send email on pull request
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          connection_url: ${{ secrets.MAIL_CONNECTION }}
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: New pull request submitted to ${GITHUB_REPOSITORY}
+          to: vivekvishalmi@gmail.com
+          from: GitHub Actions <noreply@github.com>
+          body: |
+            A new pull request has been submitted to ${GITHUB_REPOSITORY}.
+            Pull request URL: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/pull/${GITHUB_PULL_REQUEST}
