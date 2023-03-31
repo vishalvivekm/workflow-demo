@@ -35,7 +35,7 @@ jobs:
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: "run-script job failed"
           to: vivekvishalmi@gmail.com
-          from: <noreply@github.com>
+          from: Github Actions <noreply@github.com>
           body: |
             run-script job failed and this mail is to notify you.
 
