@@ -21,9 +21,9 @@ jobs:
           secure: true
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          subject: New pull request submitted to ${GITHUB_REPOSITORY}
+          subject: New pull request submitted to ${{github.repository}}
           to: vivekvishalmi@gmail.com
-          from: GitHub Actions <noreply@github.com>
+          from: GitHub Actions # <vishalvivek488@gmail.com>
           body: |
-            A new pull request has been submitted to ${GITHUB_REPOSITORY}.
-            Pull request URL: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/pull/${GITHUB_PULL_REQUEST}
+            A new pull request has been submitted to ${{github.repository}}.
+            Pull request URL: https://github.com/${{github.repository}}/pull/${{github.event.number}}
