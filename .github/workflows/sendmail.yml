@@ -12,7 +12,14 @@ jobs:
   send-email:
     runs-on: ubuntu-latest
     steps:
+      - name: Step is going to pass
+        run: echo Passing step
+          
+      - name: Step is going to fail
+        run: exit 1
+        
       - name: Send email
+        if: ${{ failure() }}
         uses: dawidd6/action-send-mail@v3
         with:
           connection_url: ${{ secrets.MAIL_CONNECTION }}
@@ -25,5 +32,5 @@ jobs:
           to: vivekvishalmi@gmail.com
           from: GitHub Actions # <vishalvivek488@gmail.com>
           body: |
-            A new pull request has been submitted to ${{github.repository}}.
+            A new pull request has been submitted to ${{github.repository}} failed.
             Pull request URL: https://github.com/${{github.repository}}/pull/${{github.event.number}}
