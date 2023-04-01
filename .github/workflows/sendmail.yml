@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Step is going to pass
         run: echo Passing step
-          
+        
       - name: Step is going to fail
         run: exit 1
         
@@ -36,21 +36,4 @@ jobs:
           to: vivekvishalmi@gmail.com
           from: Github Actions <noreply@github.com>
           body: |
-            run-script job failed and this mail is to notify you.
-
-#       - name: Send email
-#         if: ${{ failure() }}
-#         uses: dawidd6/action-send-mail@v3
-#         with:
-#           connection_url: ${{ secrets.MAIL_CONNECTION }}
-#           server_address: smtp.gmail.com
-#           server_port: 465
-#           secure: true
-#           username: ${{ secrets.MAIL_USERNAME }}
-#           password: ${{ secrets.MAIL_PASSWORD }}
-#           subject: New pull request submitted to ${{github.repository}}
-#           to: vivekvishalmi@gmail.com
-#           from: GitHub Actions # <vishalvivek488@gmail.com>
-#           body: |
-#             A new pull request has been submitted to ${{github.repository}} failed.
-#             Pull request URL: https://github.com/${{github.repository}}/pull/${{github.event.number}}
+            run-script job failed and this mail is to notify you..
